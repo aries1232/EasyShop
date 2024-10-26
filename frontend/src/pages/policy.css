@@ -1,0 +1,52 @@
+/* Policy.css */
+
+.contactus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    margin: 2rem auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contactus img {
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .contactus .col-md-6 {
+    padding-right: 2rem;
+  }
+  
+  .contactus .col-md-4 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .contactus p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .contactus {
+      flex-direction: column;
+      padding: 1rem;
+    }
+  
+    .contactus .col-md-6, 
+    .contactus .col-md-4 {
+      padding: 0;
+    }
+    
+    .contactus img {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+  }
+  
