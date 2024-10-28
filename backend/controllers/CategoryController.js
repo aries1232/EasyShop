@@ -19,7 +19,7 @@ export const createCategoryController = async(req,res) => {
         res.status(201).send({
             success:true,
             message:'category created successfully',
-            cateogry,
+            category,
         })
 
     }catch (error) {

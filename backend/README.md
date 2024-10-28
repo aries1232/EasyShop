@@ -1,1 +1,1 @@
-"# EasyShop-2024" 
+"# EasyShop" 
