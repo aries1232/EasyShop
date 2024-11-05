@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useCategory from "../hooks/UseCategory";
 import Layout from "../component/layout/Layout";
+//checking all code
 const Categories = () => {
   const categories = useCategory();
   return (
-    <Layout title={"All Categories"}>
+    <Layout title={"All Categories "}>
       <div className="container" style={{ marginTop: "100px" }}>
         <div className="row container">
           {categories.map((c) => (
