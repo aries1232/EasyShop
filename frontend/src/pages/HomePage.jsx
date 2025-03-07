@@ -124,7 +124,7 @@ const HomePage = () => {
           <div className="d-flex flex-column">
             {categories?.map((c) => (
               <Checkbox
-                key={c._id}
+                key={c._id + c.name}
                 onChange={(e) => handleFilter(e.target.checked, c._id)}
               >
                 {c.name}
@@ -136,7 +136,7 @@ const HomePage = () => {
           <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
               {Prices?.map((p) => (
-                <div key={p._id}>
+                <div key={p._id + p.name}>
                   <Radio value={p.array}>{p.name}</Radio>
                 </div>
               ))}

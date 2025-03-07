@@ -17,12 +17,14 @@
   }
   .home-page .card-name-price {
     display: flex;
+    
     flex-direction: row;
     justify-content: space-between;
   }
   
   .home-page .card-price {
     color: green;
+  
     font-weight: bold;
   }
   .home-page button {
@@ -50,16 +52,17 @@
   ============== */
   .filters h4 {
     margin-top: 100px;
-    color: gray !important;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.337);
+    
+    padding:5px;
+    color: rgb(47, 47, 47) !important;
+    border-bottom: 1px solid rgba(32, 32, 32, 0.337);
   }
   
-  .ant-checkbox-wrapper:first-of-type {
-    margin-left: 8px;
-  }
+ 
   
   .ant-checkbox-wrapper {
     margin: 2px;
+    padding-left: 20px;
   }
   .ant-radio-wrapper {
     margin-bottom: 5px !important;
@@ -69,13 +72,14 @@
   .filters button {
     background-color: black;
     width: 100%;
+    
     border: none;
     border-radius: 0;
     margin-top: 20px;
   }
   
   .loadmore {
-    color: green;
+    color: rgb(0, 0, 0);
     font-weight: bold;
     font-size: 20px !important;
   }
