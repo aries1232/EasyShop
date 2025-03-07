@@ -3,22 +3,27 @@ import Layout from "../component/layout/Layout";
 import { useParams, useNavigate } from "react-router-dom";
 import "./categoryProduct.css";
 import axios from "axios";
+
+
 const CategoryProduct = () => {
+
   const params = useParams();
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
+    //console.log("Params Object:", params);
+    //console.log("Slug received:", params?.slug);
     if (params?.slug) getPrductsByCat();
   }, [params?.slug]);
+
   const getPrductsByCat = async () => {
     try {
-      const { data } = await axios.get(
-        `/api/v1/product/product-category/${params.slug}`
-      );
+      const { data } = await axios.get(`/api/v1/product/product-category/${params.slug}`);
       setProducts(data?.products);
       setCategory(data?.category);
+
     } catch (error) {
       console.log(error);
     }
