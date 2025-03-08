@@ -81,6 +81,7 @@ export const categoryController = async(req,res) => {
 }
 
 //get single cateogry 
+//no use as of now 
 export const singleCategoryController = async(req,res) => {
     try{
         const {id} = req.params;
