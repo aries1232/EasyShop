@@ -43,18 +43,21 @@ const HomePage = () => {
       setLoading(true);
       const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
       setLoading(false);
+      //console.log(data);
       setProducts(data.products);
+      
     } catch (error) {
       setLoading(false);
       console.log(error);
     }
   };
 
-  //getTOtal COunt
+  //getTotal Count
   const getTotal = async () => {
     try {
       const { data } = await axios.get("/api/v1/product/product-count");
       setTotal(data?.total);
+       
     } catch (error) {
       console.log(error);
     }
@@ -172,12 +175,12 @@ const HomePage = () => {
                     </h5>
                   </div>
                   <p className="card-text ">
-                    {p.description.substring(0, 60)}...
+                    {p.description}
                   </p>
                   <div className="card-name-price">
                     <button
                       className="btn btn-info ms-1"
-                      onClick={() => navigate(`/product/${p.slug}`)}
+                      onClick={() => navigate(`/product/${p._id}`)}
                     >
                       More Details
                     </button>
