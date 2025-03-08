@@ -1,7 +1,8 @@
 import productModel from '../models/productModel.js';
 import categoryModel from '../models/categoryModel.js';
 import fs from 'fs';
-import multer from 'multer';  
+import multer from 'multer'; 
+import slugify from "slugify"; 
 
 const upload = multer({ dest: 'uploads/' });  
 
@@ -21,8 +22,7 @@ export const createProductController = async (req, res) => {
                 return res.status(500).send({ message: 'Photo shoudl be < 1MB' });
             }
 
-            const product = new productModel({ 
-                name, description, price, category, quantity, shipping,
+            const product = new productModel({ name, description, price, category, quantity, shipping,
                 photo: { 
                     data: fs.readFileSync(req.file.path),
                     contentType: req.file.mimetype  

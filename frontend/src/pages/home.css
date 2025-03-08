@@ -37,12 +37,13 @@
   }
   
   .home-page .card-text {
-    color: rgb(90, 89, 89);
+    color: rgb(34, 34, 34);
   }
   
   .home-page .card img:hover {
-    transform: scale(0.9);
-  }
+    transform: scale(0.95);
+    transition: transform 0.4s ease-in-out;
+}
   
   .home-page .card-img-top {
     height: 300px !important;

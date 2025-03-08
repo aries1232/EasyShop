@@ -6,26 +6,30 @@ import "./proDetails.css";
 
 const ProductDetails = () => {
   const params = useParams();
+  const {id} = params;
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   //initalp details
   useEffect(() => {
-    if (params?.slug) getProduct();
-  }, [params?.slug]);
+    if (params?.id) getProduct();
+  }, [params?.id]);
+
+
   //getProduct
   const getProduct = async () => {
     try {
-      const { data } = await axios.get(
-        `/api/v1/product/get-product/${params.slug}`
-      );
+      const { data } = await axios.get(`/api/v1/product/get-product/${id}`);
+      //console.log(data);
       setProduct(data?.product);
       getSimilarProduct(data?.product._id, data?.product.category._id);
     } catch (error) {
       console.log(error);
     }
   };
+
+
   //get similar product
   const getSimilarProduct = async (pid, cid) => {
     try {
@@ -41,6 +45,7 @@ const ProductDetails = () => {
     <Layout>
       <div className="row container product-details">
         <div className="col-md-6">
+        {product._id && (
           <img
             src={`/api/v1/product/product-photo/${product._id}`}
             className="card-img-top"
@@ -48,6 +53,7 @@ const ProductDetails = () => {
             height="300"
             width={"350px"}
           />
+        )}
         </div>
         <div className="col-md-6 product-details-info">
           <h1 className="text-center">Product Details</h1>
@@ -62,7 +68,7 @@ const ProductDetails = () => {
             })}
           </h6>
           <h6>Category : {product?.category?.name}</h6>
-          <button class="btn btn-secondary ms-1">ADD TO CART</button>
+          <button className="btn btn-secondary ms-1">ADD TO CART</button>
         </div>
       </div>
       <hr />
@@ -95,7 +101,7 @@ const ProductDetails = () => {
                 <div className="card-name-price">
                   <button
                     className="btn btn-info ms-1"
-                    onClick={() => navigate(`/product/${p.slug}`)}
+                    onClick={() => navigate(`/product/${p._id}`)}
                   >
                     More Details
                   </button>
