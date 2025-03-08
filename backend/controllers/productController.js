@@ -5,6 +5,7 @@ import multer from 'multer';
 
 const upload = multer({ dest: 'uploads/' });  
 
+//create product controller
 export const createProductController = async (req, res) => {
     try {
         const { name, description, price, category, quantity, shipping } = req.body;
@@ -48,7 +49,7 @@ export const createProductController = async (req, res) => {
 };
 
 // get all product controller
-export const  getProductController = async(req,res) => {
+export const  getAllProductController = async(req,res) => {
     try{
          const products = await productModel.find({}).select("-photo").populate("category").limit(12).sort({createdAt:-1});
          res.status(200).send({
@@ -68,6 +69,26 @@ export const  getProductController = async(req,res) => {
         })
     }
 }
+
+  //category product controller
+  export const productCategoryController = async (req, res) => {
+    try {
+      const category = await categoryModel.findOne({ slug: req.params.slug });
+      const products = await productModel.find({ category }).populate("category");
+      res.status(200).send({
+        success: true,
+        category,
+        products,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(400).send({
+        success: false,
+        error,
+        message: "Error While Getting products",
+      });
+    }
+  };
 
 //get single product 
  export const getSingleProductController = async(req,res) => {
@@ -196,7 +217,6 @@ export const productCountController = async(req,res) => {
 };
 
 //filters controller
-
 export const productFiltersController = async(req,res) => {
     try {
         const {checked , radio} = req.body;
@@ -247,7 +267,6 @@ export const productListController = async(req,res) => {
 };
 
 //search product controller 
-
 export const searchProductController = async (req, res) => {
     try {
       const { keyword } = req.params;
@@ -296,25 +315,7 @@ export const searchProductController = async (req, res) => {
     }
   };
 
-  //category product controller
-  export const productCategoryController = async (req, res) => {
-    try {
-      const category = await categoryModel.findOne({ slug: req.params.slug });
-      const products = await productModel.find({ category }).populate("category");
-      res.status(200).send({
-        success: true,
-        category,
-        products,
-      });
-    } catch (error) {
-      console.log(error);
-      res.status(400).send({
-        success: false,
-        error,
-        message: "Error While Getting products",
-      });
-    }
-  };
+ 
 
   //payment gatway API
 

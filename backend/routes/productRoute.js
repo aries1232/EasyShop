@@ -5,7 +5,7 @@ import { brainTreePaymentController,
         braintreeTokenController,
         createProductController,
         deleteProductController,
-        getProductController,
+        getAllProductController,
         getSingleProductController,
         productCategoryController,
         productCountController,
@@ -25,7 +25,7 @@ const upload = multer({ dest: 'uploads/' });
 router.post('/create-product' , requireSignIn , isAdmin ,upload.single('photo') , createProductController);
 
 //get product route
-router.get('/get-product' , getProductController);
+router.get('/get-product' , getAllProductController);
 
 //get single product 
 router.get('/get-product/:id' , getSingleProductController);
