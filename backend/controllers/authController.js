@@ -97,9 +97,9 @@ export const loginController = async(req,res)  => {
                 email : user.email,
                 address: user.address,
                 phone: user.phone,
+                role: user.role,
             },
             token,
-            
         })
 
     } catch (error) {
@@ -115,7 +115,7 @@ export const loginController = async(req,res)  => {
 
 //test controller
 export const  testController = (req,res) => {
-    //console.log('protected route')
+    console.log('protected route')
     try {
         res.send("protected route");
     } catch (error) {
