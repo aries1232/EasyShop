@@ -1,5 +1,4 @@
 import React from "react";
-// import AdminMenu from "../../component/layout/AdminMenu";
 import Layout from "./../../component/layout/Layout";
 import AdminMenu from "../../component/layout/AdminMenu";
 
